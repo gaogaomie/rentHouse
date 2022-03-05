@@ -5,6 +5,7 @@
     :columns="columns"
     @confirm="onConfirm"
     @cancel="onCancel"
+    value-key="label"
   />
 </template>
 
@@ -17,7 +18,7 @@ export default {
     },
     type: {
       require: true,
-      type: String,
+      type: [String, Object],
     },
   },
   methods: {

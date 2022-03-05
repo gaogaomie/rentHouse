@@ -62,3 +62,12 @@ export const pickHouse =(params) => {
    method:'get',
   })
  }
+
+ /* 发布房源 */
+ export const publishHouse =(data) => {
+  return request({
+   url:'/user/houses',
+   method:'post',
+   data
+  })
+ }

@@ -20,7 +20,9 @@
         <h2 class="h-box3">{{ item.title }}</h2>
         <h4 class="s-box1">{{ item.desc }}</h4>
         <span class="h-box1" v-for="(i, p) in item.tags" :key="p">{{ i }}</span>
-        <h4 class="h-box2"><span>2800</span> 元/月</h4>
+        <h4 class="h-box2">
+          <span>{{ item.price }}</span> 元/月
+        </h4>
       </div>
     </div>
   </div>

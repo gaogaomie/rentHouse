@@ -212,7 +212,15 @@ export default {
       this.$refs.menu1.toggle()
     },
     onConfirmHandle(value, index) {
-      console.log('picke选择器返回值', value, index)
+      value.forEach((item) => {})
+
+      console.log('筛选', value)
+      function flat(arr) {
+        return [].concat(
+          ...arr.map((item) => [].concat(item, ...flat(item.children)))
+        )
+      }
+      console.log('transformObj(this.houseLists)', flat(this.houseLists))
     },
     onCancel1() {
       this.$refs.menu1.toggle()
@@ -239,6 +247,7 @@ export default {
         let res = await searchHouseCondition(this.currentCity.value)
         console.log(this.currentCity)
         this.conditionObj = res.data.body
+        this.$store.commit('setConditionObj', res.data.body)
         // 地区信息
         this.houseLists = this.transformTree([
           _.cloneDeepWith(res.data.body.area),
@@ -246,7 +255,7 @@ export default {
         ])
       } catch (error) {
         console.log(error)
-        this.$toast.fail('查询房屋信息失败')
+        console.log(error)
       }
     },
     // 转化 添加children数组
@@ -369,3 +378,5 @@ export default {
   font-size: 24px !important;
 }
 </style>
+
+
